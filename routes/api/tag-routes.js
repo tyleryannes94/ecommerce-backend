@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     res.json(tags);
   }) 
   .catch ((err)=>{
-    console.log(err);
+    console.error(err);
     res.status(500).json(err);
   });
 });
@@ -29,7 +29,7 @@ router.get('/:id', (req, res) => {
       res.status(404).json({ message: 'No tag found with this id!' });
       return;
     }
-    res.json(category);
+    res.json(tag);
   })
   .catch ((err)=>{
     console.error(err);
@@ -67,6 +67,7 @@ router.put('/:id', (req, res) => {
   })
   .catch ((err) =>{
     console.error(err);
+    res.status(400).json(err);
   });
 });
 
